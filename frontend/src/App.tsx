@@ -31,14 +31,20 @@ const App: React.FC = () => {
   const [results, setResults] = useState<ModelResults | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [currentScenario, setCurrentScenario] = useState<string>('base');
+  const [isOfflineMode, setIsOfflineMode] = useState<boolean>(false);
 
   const handleCalculate = useCallback(async () => {
     setLoading(true);
     try {
       const data = await calculateModel(inputs);
       setResults(data);
+      
+      // Check if we're in offline mode by looking at console warnings
+      // This is a simple way to detect if the API failed
+      setIsOfflineMode(!process.env.REACT_APP_API_URL || process.env.REACT_APP_API_URL.includes('localhost'));
     } catch (error) {
       console.error('Error calculating model:', error);
+      setIsOfflineMode(true);
     } finally {
       setLoading(false);
     }
@@ -69,9 +75,10 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Navbar 
-        currentScenario={currentScenario} 
+        currentScenario={currentScenario}
         onScenarioChange={handleScenarioChange}
         inputs={inputs}
+        isOfflineMode={isOfflineMode}
       />
       <div className="app-container">
         <ControlPanel 

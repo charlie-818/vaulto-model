@@ -7,9 +7,10 @@ interface NavbarProps {
   currentScenario: string;
   onScenarioChange: (scenario: string) => void;
   inputs: ModelInputs;
+  isOfflineMode?: boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ currentScenario, onScenarioChange, inputs }) => {
+const Navbar: React.FC<NavbarProps> = ({ currentScenario, onScenarioChange, inputs, isOfflineMode = false }) => {
   const handleExportCSV = async () => {
     try {
       const blob = await exportCSV(inputs);
@@ -50,6 +51,11 @@ const Navbar: React.FC<NavbarProps> = ({ currentScenario, onScenarioChange, inpu
         <div className="brand-content">
           <img src="/logo.png" alt="Vaulto Logo" className="navbar-logo" />
           <h1>Vaulto Financial Model</h1>
+          {isOfflineMode && (
+            <span className="offline-indicator" title="Running in offline mode with local calculations">
+              🔄 Offline Mode
+            </span>
+          )}
         </div>
         <span className="navbar-subtitle">Real-time Scenario Analysis</span>
       </div>
