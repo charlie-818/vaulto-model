@@ -176,6 +176,21 @@ For production, update this to your deployed backend URL.
 
 ## 🌐 Deployment
 
+### Quick Deploy to Netlify (Recommended)
+
+This project is pre-configured for Netlify deployment:
+
+1. **Fork this repository** on GitHub
+2. **Connect to Netlify**:
+   - Go to [Netlify](https://netlify.com)
+   - Click "New site from Git"
+   - Connect your GitHub account
+   - Select your forked repository
+   - Netlify will auto-detect the build settings from `netlify.toml`
+3. **Deploy**: Netlify will automatically build and deploy your site
+
+The site will be available at `https://your-site-name.netlify.app`
+
 ### Backend Deployment (Heroku/Railway)
 
 1. **Heroku**:
@@ -198,7 +213,7 @@ For production, update this to your deployed backend URL.
    vercel
    ```
 
-2. **Netlify**:
+2. **Netlify** (Manual Setup):
    - Connect GitHub repo
    - Build command: `npm run build`
    - Publish directory: `build`
