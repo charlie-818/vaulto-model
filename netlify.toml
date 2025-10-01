@@ -1,10 +1,13 @@
 [build]
   base = "frontend"
-  command = "npm run build"
+  command = "npm install && npm run build"
   publish = "build"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "16"
+  NPM_VERSION = "8"
+  CI = "false"
+  NODE_ENV = "production"
   REACT_APP_API_URL = "https://vaulto-backend.herokuapp.com"
 
 # Handle client-side routing

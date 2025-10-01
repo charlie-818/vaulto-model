@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 import ControlPanel from './components/ControlPanel';
 import Dashboard from './components/Dashboard';
@@ -32,12 +32,7 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [currentScenario, setCurrentScenario] = useState<string>('base');
 
-  // Calculate on mount and when inputs change
-  useEffect(() => {
-    handleCalculate();
-  }, [inputs]);
-
-  const handleCalculate = async () => {
+  const handleCalculate = useCallback(async () => {
     setLoading(true);
     try {
       const data = await calculateModel(inputs);
@@ -47,7 +42,12 @@ const App: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [inputs]);
+
+  // Calculate on mount and when inputs change
+  useEffect(() => {
+    handleCalculate();
+  }, [handleCalculate]);
 
   const handleInputChange = (key: keyof ModelInputs, value: number) => {
     setInputs(prev => ({ ...prev, [key]: value }));
