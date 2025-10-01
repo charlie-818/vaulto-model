@@ -1,0 +1,139 @@
+.navbar {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-logo {
+  height: 32px;
+  width: auto;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px;
+  /* Remove filter to show original logo colors */
+}
+
+.navbar-brand h1 {
+  font-size: 24px;
+  margin: 0;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.navbar-subtitle {
+  font-size: 12px;
+  color: #cbd5e1;
+  display: block;
+  margin-top: 4px;
+  margin-left: 44px; /* Align with the text, accounting for logo width + gap */
+}
+
+.navbar-controls {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.scenario-selector {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.scenario-selector label {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.scenario-btn {
+  padding: 8px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.scenario-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.scenario-btn.active {
+  border-color: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.scenario-btn.active.worst {
+  background: #ef4444;
+}
+
+.scenario-btn.active.base {
+  background: #3b82f6;
+}
+
+.scenario-btn.active.best {
+  background: #10b981;
+}
+
+.export-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.export-btn {
+  padding: 8px 16px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1e3a8a;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.export-btn:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .navbar-controls {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .scenario-selector,
+  .export-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+
